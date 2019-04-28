@@ -26,12 +26,24 @@ class Parser
         $this->setCache($cacheItemPool);
     }
 
+    /**
+     * Set an alternative PSR-6 compliant cache item pool.
+     *
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
     public function setCache(CacheItemPoolInterface $cacheItemPool)
     {
         $this->cache = $cacheItemPool;
         return $this;
     }
 
+    /**
+     * Set the Wikitext to parse.
+     *
+     * @param string $wikitext
+     * @return Parser
+     */
     public function setWikitext(string $wikitext) : Parser
     {
         $this->wikitext = $wikitext;
@@ -52,6 +64,11 @@ class Parser
         return $this;
     }
 
+    /**
+     * Constructs the Wikitext parser URL.
+     *
+     * @return string
+     */
     private function buildUrl()
     {
         return $this->endpoint.$this->queryString.urlencode($this->wikitext);
