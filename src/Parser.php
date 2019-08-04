@@ -102,7 +102,7 @@ class Parser
         $returnValue = $element->ownerDocument->saveXML($element);
 
         if ($this->format === Format::PLAIN_TEXT) {
-            $returnValue = strip_tags($returnValue);
+            $returnValue = Utils::stripTagsMaintainWhitespace($returnValue);
         }
 
         $returnValue = trim($returnValue);
